@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>The GIF-O-Matic</title>
+</head>
+<body>
+    <h2>Welcome to The GIF-O-Matic!</h2>
+
+    <div>
+        <img src="#">
+    </div>
+
+    <button id="catRandom">THE CAT RANDOMIZER</button>
+
+    <div>
+       <form action="">
+        <div>
+            <label for="search"></label>
+            <input type="text" id="search" name="search" placeholder="Find a GIF..." required>
+
+            <button type="submit" id="submit">Find GIF</button>
+        </div>
+       </form> 
+    </div>
+
+    <script>
+
+        const img = document.querySelector('img');   
+        function fetchCats(){
+            fetch('https://api.giphy.com/v1/gifs/translate?api_key=C0iY4fhRlFVHo7gFrE2IxSYb1D0X0eiY&s=cats', {mode: 'cors'})
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(response){
+                img.src = response.data.images.original.url;
+            })
+            .catch (e => {
+                console.log(e);
+            })
+        }
+
+        window.onload = fetchCats()
+
+        const catRandom = document.getElementById('catRandom');
+        catRandom.addEventListener('click', () => {
+            fetchCats();
+        })
+
+        const input = document.querySelector('input');
+        const form = document.querySelector('form');
+
+        function searchGif(searchQuery){
+            let url = 'https://api.giphy.com/v1/gifs/translate?api_key=C0iY4fhRlFVHo7gFrE2IxSYb1D0X0eiY&s=' + searchQuery;
+            fetch(url, {mode:'cors'})
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(response){
+                img.src = response.data.images.original.url;
+            })
+            .catch(e => {
+                console.log(e);
+            })
+        }
+
+        form.addEventListener('submit', (e) => {
+            event.preventDefault();
+            searchGif(input.value);
+        })
+
+    </script>
+</body>
+</html>

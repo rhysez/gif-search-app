@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Pacifico&family=Paytone+One&family=Sriracha&display=swap');
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url('./images/retro.jpg');
+}
+
+h2 {
+    font-family: 'Paytone One', 'Lucida Sans', sans-serif;
+    font-size: 6rem;
+    color: rgb(209, 57, 247);
+}
+
+img {
+    border: solid 4px white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+#catRandom {
+    font-family: 'Paytone One', 'Lucida Sans', sans-serif;
+    color: white;
+    background-color: rgb(209, 57, 247);
+    margin-bottom: 2rem;
+    width: 20%;
+    border: none;
+    border-radius: 10px;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+input {
+    font-family: 'Paytone One', 'Lucida Sans', sans-serif;
+    font-size: 2rem;
+    border: none;
+    border-radius: 7.5px;
+}
+
+#submit {
+    font-family: 'Paytone One', 'Lucida Sans', sans-serif;
+    color: white;
+    background-color: rgb(209, 57, 247);
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+}
