@@ -52,25 +52,16 @@
       const input = document.querySelector("input");
       const form = document.querySelector("form");
 
-      function searchGif(searchQuery) {
-        let url =
-          "https://api.giphy.com/v1/gifs/translate?api_key=C0iY4fhRlFVHo7gFrE2IxSYb1D0X0eiY&s=" +
-          searchQuery;
-        fetch(url, { mode: "cors" })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (response) {
-            img.src = response.data.images.original.url;
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+      async function searchGif(searchQuery) {
+        let url = "https://api.giphy.com/v1/gifs/translate?api_key=C0iY4fhRlFVHo7gFrE2IxSYb1D0X0eiY&s=" + searchQuery;
+        const response = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=C0iY4fhRlFVHo7gFrE2IxSYb1D0X0eiY&s=" + searchQuery)
+        const gifData = await response.json();
+        img.src = gifData.data.images.original.url;
       }
 
       form.addEventListener("submit", (e) => {
         event.preventDefault();
-        searchGif(input.value);
+        searchGif(input.value).catch(e => { console.log(e) });
       });
     </script>
   </body>
